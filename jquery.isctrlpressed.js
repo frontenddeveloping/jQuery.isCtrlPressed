@@ -32,6 +32,8 @@
         checkKeyUpEvent = function () {
             $.isCtrlPressed = isCtrlPressed = false;
         };
+        
+    $.isCtrlPressed = false;
 
     $(document).on('keydown', checkKeyDownEvent).on('keyup', checkKeyUpEvent);
 
