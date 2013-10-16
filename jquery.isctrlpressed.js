@@ -11,22 +11,27 @@
             opera : !!window.opera,
             webkit : UA.indexOf('WebKit') > -1
         },
-
-        checkKeyDownEvent = function (e) {
-            var keyCode = e.which;
-
-            isCtrlPressed = isCtrlPressed || e.ctrlKey;
-
-            if (isMac && !isCtrlPressed) {
-                if (browser.mozilla) {
-                    isCtrlPressed = keyCode === 224;
-                } else if (browser.webkit || browser.opera) {
-                    isCtrlPressed = keyCode === 91 || keyCode === 93
+        
+        isCtrl = function (e) {
+            var is_ctrl = e.ctrlKey,
+                keyCode = e.which;
+    
+            if (isMac && !is_ctrl) {
+                if ($.browser.mozilla) {
+                    is_ctrl = keyCode === 224;
+                } else if ($.browser.webkit || $.browser.opera) {
+                    is_ctrl = keyCode === 91 || keyCode === 93
                 }
             }
 
-            $.isCtrlPressed = isCtrlPressed;
+            return is_ctrl;
+        },
 
+        checkKeyDownEvent = function (e) {
+
+            isCtrlPressed = isCtrlPressed || isCtrl(e);
+
+            $.isCtrlPressed = isCtrlPressed;
         },
 
         checkKeyUpEvent = function () {
@@ -35,6 +40,10 @@
         
     $.isCtrlPressed = false;
 
-    $(document).on('keydown', checkKeyDownEvent).on('keyup', checkKeyUpEvent);
+    $.isCtrl = isCtrl;
+
+    $(document)
+        .on('keydown', checkKeyDownEvent)
+        .on('keyup', checkKeyUpEvent);
 
 })(jQuery);
