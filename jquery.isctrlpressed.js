@@ -17,9 +17,9 @@
                 keyCode = e.which;
     
             if (isMac && !is_ctrl) {
-                if ($.browser.mozilla) {
+                if (browser.mozilla) {
                     is_ctrl = keyCode === 224;
-                } else if ($.browser.webkit || $.browser.opera) {
+                } else if (browser.webkit || browser.opera) {
                     is_ctrl = keyCode === 91 || keyCode === 93
                 }
             }
