@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery.isCtrlPressed plugin test</title>
+    <script src="../lib/jquery-1.10.2.js"></script>
+    <script src="../jQuery.isCtrlPressed.js"></script>
+    <script src="js/example.js"></script>
+    <style>
+        body, h1, div {
+            margin : 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            color: white;
+            height: 99.5%;
+            min-height: 99.5%;
+            padding-left: 10px;
+            padding-top: 0.5%;
+        }
+
+        h1 {
+            font: 24px/1 "Arial", sans-serif;
+        }
+
+        #log {
+            background: #000;
+        }
+
+        #log,
+        #log div {
+            position: relative;
+        }
+
+        #log div {
+            font: 14px/1 monospace, sans-serif;
+            margin-top: 10px;
+        }
+
+        @-webkit-keyframes blink {
+            0%   { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes blink {
+            0%   { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        #log:empty {
+            height: 24px;
+            width: 14px;
+        }
+
+        #log div:last-child:after,
+        #log:empty:after{
+            background: #fff;
+            bottom: 0;
+            content : '';
+            display: block;
+            height: 2px;
+            position: absolute;
+            right: 0;
+            width: 14px;
+            -webkit-animation: blink 0.5s infinite;
+            animation: blink 0.5s infinite;
+        }
+
+        #log div:last-child:after {
+            bottom: -24px;
+            left: 0;
+            right: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Test jQuery.isCtrlPressed plugin. Press any key...</h1>
+    <div id="log"></div>
+</body>
+</html>
